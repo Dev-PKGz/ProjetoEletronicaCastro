@@ -1,0 +1,191 @@
+/* Estilo para o corpo da página */
+body {
+    font-family: Arial, sans-serif; /* Define a fonte para o corpo da página */
+    display: flex; /* Utiliza flexbox para o layout */
+    height: 100vh; /* Altura total da viewport */
+    margin: 0; /* Remove margens padrão */
+    overflow: hidden; /* Ocultar a barra de rolagem */
+    flex: 1; /* Ocupar todo o espaço restante */
+    height: 100vh; /* Altura igual à altura da viewport */
+    background-image: url('/img/backgournd.jpg'); /* Caminho da imagem de fundo */
+    background-size: cover; /* Redimensiona a imagem para cobrir completamente a div */
+    background-position: center; /* Centraliza a imagem na div */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+}
+
+/* Estilo para a div vazia */
+.empty-div {
+    flex: 1; /* Ocupar todo o espaço restante */
+    height: 100vh; /* Altura igual à altura da viewport */
+}
+
+/* Estilo para a caixa de login */
+.login-container {
+    background-color: rgba(1, 5, 27, 0.9); /* Fundo da caixa de login com opacidade */
+    padding: 50px; /* Espaçamento interno */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada */
+    width: 300px; /* Largura da caixa de login */
+    height: auto; /* Altura da caixa de login */
+    margin-left: auto; /* Alinhar à direita */
+    
+}
+
+/* Estilo para o campo de seleção de setor */
+.login-container select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Estilo para o campo de e-mail */
+.login-container input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Estilo para o título da tela de login */
+.login-container h2 {
+    margin-bottom: 20px; /* Margem inferior */
+    margin-top: 20%;/* Margem inferior */
+    font-size: 24px; /* Tamanho da fonte */
+    color: #f3c600; /* Cor do texto */
+    text-align: center; /* Centralizar o texto */
+}
+
+/* Estilo para o título da tela de login */
+.login-container h3 {
+    margin-bottom: 20px; /* Margem inferior */
+    margin-top: 10%;/* Margem inferior */
+    font-size: 24px; /* Tamanho da fonte */
+    color: #f3c600; /* Cor do texto */
+    text-align: center; /* Centralizar o texto */
+}
+
+/* Estilo para os rótulos dos campos de entrada */
+.login-container label {
+    display: block; /* Exibir como bloco para ocupar a largura total */
+    margin-bottom: 8px; /* Margem inferior */
+    font-weight: bold; /* Negrito */
+    color: #f3c600; /* Cor do texto */
+}
+
+/* Estilo para os campos de entrada */
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%; /* Largura total */
+    padding: 10px; /* Espaçamento interno */
+    margin-bottom: 15px; /* Margem inferior */
+    border: 1px solid #ccc; /* Borda */
+    border-radius: 4px; /* Borda arredondada */
+    box-sizing: border-box; /* Incluir padding e borda na largura */
+}
+
+/* Estilo para o contêiner da senha */
+.login-container .password-container {
+    position: relative; /* Posição relativa para posicionar o ícone */
+}
+
+/* Estilo para o ícone de olho para mostrar/ocultar senha */
+.login-container .password-container .toggle-password {
+    position: absolute; /* Posição absoluta */
+    right: 10px; /* Distância da direita */
+    top: 40%; /* Ajuste para centralizar verticalmente */
+    transform: translateY(-50%); /* Centralizar verticalmente */
+    cursor: pointer; /* Cursor ao passar por cima */
+    font-size: 18px; /* Tamanho do ícone */
+    color: #555; /* Cor do ícone */
+}
+
+/* Estilo para o botão de entrada */
+.login-container button {
+    width: 100%; /* Largura total */
+    padding: 10px; /* Espaçamento interno */
+    background-color: #f3c600; /* Cor de fundo */
+    border: none; /* Remover borda */
+    border-radius: 4px; /* Borda arredondada */
+    color: #000c44; /* Cor do texto */
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Cursor ao passar por cima */
+    transition: background-color 0.3s ease; /* Transição suave da cor de fundo */
+}
+
+.login-container button:hover {
+    background-color: #ad9300; /* Mudança de cor no hover */
+}
+
+/* Estilo para o link de registro */
+.login-container .register-link {
+    display: block; /* Exibir como bloco */
+    margin-top: 10px; /* Margem superior */
+    text-align: center; /* Centralizar o texto */
+    color: #f3c600; /* Cor do texto */
+    text-decoration: none; /* Remover sublinhado */
+}
+
+.login-container .register-link:hover {
+    color: #ad9300; /* Mudança de cor no hover */
+}
+
+/* Estilo para o link de registro */
+.login-container .login-link {
+    display: block; /* Exibir como bloco */
+    margin-top: 30px; /* Margem superior */
+    text-align: center; /* Centralizar o texto */
+    color: #f3c600; /* Cor do texto */
+    text-decoration: none; /* Remover sublinhado */
+}
+
+.login-container .login-link:hover {
+    color: #ad9300; /* Mudança de cor no hover */
+}
+
+/* Estilo para a mensagem de erro */
+.error {
+    color: #ff3860; /* Cor vermelha moderna */
+    background-color: #1e1e1e; /* Fundo escuro */
+    border: 1px solid #ff3860; /* Borda correspondente à cor do texto */
+    border-radius: 8px; /* Bordas mais arredondadas */
+    padding: 12px 20px; /* Espaçamento interno */
+    font-family: 'Roboto', sans-serif; /* Fonte moderna */
+    font-size: 15px; /* Tamanho da fonte */
+    font-weight: 500; /* Peso da fonte */
+    margin-top: 15px; /* Margem superior */
+    box-shadow: 0px 4px 8px rgba(255, 56, 96, 0.5); /* Sombra colorida */
+    display: flex; /* Usado para alinhamento flexível */
+    align-items: center; /* Centraliza itens verticalmente */
+    gap: 12px; /* Espaçamento entre ícone e texto */
+    transition: all 0.3s ease; /* Transição suave */
+    animation: fadeIn 0.5s ease-in-out; /* Animação de entrada */
+}
+
+/* Animação de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.error i {
+    color: #ff3860; /* Cor do ícone */
+    font-size: 20px; /* Tamanho do ícone */
+}
+
+/* styles.css */
+.logo {
+    display: block;
+    margin: 0 auto 20px auto; /* Centraliza a logo e adiciona margem abaixo dela */
+    max-width: 90%; /* Ajuste este valor conforme necessário */
+    height: auto; /* Mantém a proporção da imagem */
+}
