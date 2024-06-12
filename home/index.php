@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit();
 }
 ?>
@@ -12,7 +12,7 @@ if (!isset($_SESSION['username'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAEC - Home </title>
+    <title>SAEC - Home</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
@@ -32,13 +32,15 @@ if (!isset($_SESSION['username'])) {
                 'Dashboard' => ['icon' => 'bi-columns-gap', 'link' => '#'],
                 'Agenda' => ['icon' => 'bi-calendar3', 'link' => '#'],
                 'Configurações' => ['icon' => 'bi-gear', 'link' => '#'],
-                'Conta' => ['icon' => 'bi-person-circle', 'link' => 'user']
+                'Conta' => ['icon' => 'bi-person-circle', 'link' => 'javascript:void(0);', 'id' => 'userDropdown']
             ];
 
             // Renderiza os itens do menu
             foreach ($menuItems as $name => $item) {
                 echo '<li class="item-menu">';
-                echo '<a href="' . $item['link'] . '">';
+                echo '<a href="' . $item['link'] . '"';
+                if (isset($item['id'])) echo ' id="' . $item['id'] . '"';
+                echo '>';
                 echo '<span class="icon"><i class="bi ' . $item['icon'] . '"></i></span>';
                 echo '<span class="txt-link">' . $name . '</span>';
                 echo '</a>';
@@ -47,6 +49,13 @@ if (!isset($_SESSION['username'])) {
             ?>
         </ul>
     </nav><!--menu-lateral-->
+
+    <!-- Dropdown para informações do usuário -->
+    <div id="userDropdownContent" class="dropdown-content">
+        <p>Nome de usuário: <?php echo $_SESSION['username']; ?></p>
+        <!-- Adicione outras informações do usuário aqui -->
+    </div>
+
     <script src="menu.js"></script>
 </body>
 </html>
