@@ -1,15 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const btnExpandir = document.getElementById('btn-exp');
     const menuLateral = document.querySelector('.menu-lateral');
-
-    btnExpandir.addEventListener('click', function() {
-        menuLateral.classList.toggle('minimizado');
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    const btnExpandir = document.getElementById('btn-exp');
-    const menuLateral = document.querySelector('.menu-lateral');
     const userDropdown = document.getElementById('userDropdown');
     const userDropdownContent = document.getElementById('userDropdownContent');
 

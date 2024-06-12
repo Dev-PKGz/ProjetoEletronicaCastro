@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header("Location: ../index.php");
+    header("Location: index.php");
     exit();
 }
 ?>
@@ -54,6 +54,7 @@ if (!isset($_SESSION['username'])) {
     <div id="userDropdownContent" class="dropdown-content">
         <p>Nome de usuário: <?php echo $_SESSION['username']; ?></p>
         <!-- Adicione outras informações do usuário aqui -->
+        <a href="logout.php" class="logout-btn">Deslogar</a>
     </div>
 
     <script src="menu.js"></script>
