@@ -6,61 +6,47 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAEC - Home</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
-    <title>Bem-vindo</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        .sidebar {
-            width: 250px;
-            background-color: #333;
-            color: white;
-            height: 100vh;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .sidebar h2 {
-            margin: 0 0 20px 0;
-            font-size: 1.5em;
-        }
-        .sidebar .user-info {
-            margin-bottom: 20px;
-        }
-        .sidebar .logout-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #e74c3c;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .content {
-            flex: 1;
-            padding: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
 </head>
 <body>
-    <div class="sidebar">
-        <h2>Menu</h2>
-        <div class="user-info">
-            <p>Usuário: <?php echo htmlspecialchars($_SESSION['username']); ?></p>
-            <a href="logout.php" class="logout-btn">Sair</a>
-        </div>
-    </div>
-    <div class="content">
-        <h1>Bem-vindo, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
-    </div>
+    <nav class="menu-lateral">
+        <div class="btn-expandir">
+            <i class="bi bi-list" id="btn-exp"></i>
+        </div><!--btn-expandir-->
+
+        <ul>
+            <?php
+            // Array que define os itens do menu
+            $menuItems = [
+                'Home' => ['icon' => 'bi-house-door', 'link' => '#'],
+                'Dashboard' => ['icon' => 'bi-columns-gap', 'link' => '#'],
+                'Agenda' => ['icon' => 'bi-calendar3', 'link' => '#'],
+                'Configurações' => ['icon' => 'bi-gear', 'link' => '#'],
+                'Conta' => ['icon' => 'bi-person-circle', 'link' => 'user']
+            ];
+
+            // Renderiza os itens do menu
+            foreach ($menuItems as $name => $item) {
+                echo '<li class="item-menu">';
+                echo '<a href="' . $item['link'] . '">';
+                echo '<span class="icon"><i class="bi ' . $item['icon'] . '"></i></span>';
+                echo '<span class="txt-link">' . $name . '</span>';
+                echo '</a>';
+                echo '</li>';
+            }
+            ?>
+        </ul>
+    </nav><!--menu-lateral-->
+    <script src="menu.js"></script>
 </body>
 </html>
-

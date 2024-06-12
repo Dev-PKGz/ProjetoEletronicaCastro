@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.menu-lateral {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    background-color: #333;
+    overflow-y: auto;
+    transition: width 0.3s;
+}
+
+.menu-lateral.minimizado {
+    width: 60px;
+}
+
+.menu-lateral .btn-expandir {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: #444;
+    cursor: pointer;
+}
+
+.menu-lateral .btn-expandir i {
+    font-size: 24px;
+    color: #fff;
+}
+
+.menu-lateral ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-lateral ul li {
+    width: 100%;
+}
+
+.menu-lateral ul li a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.menu-lateral ul li a:hover {
+    background-color: #555;
+}
+
+.menu-lateral ul li a .icon {
+    margin-right: 10px;
+}
+
+.menu-lateral.minimizado ul li a .txt-link {
+    display: none;
+}
+
+.menu-lateral ul li a .txt-link {
+    display: inline;
+    transition: display 0.3s;
+}
+
+@media (max-width: 768px) {
+    .menu-lateral {
+        width: 60px;
+    }
+
+    .menu-lateral ul li a .txt-link {
+        display: none;
+    }
+
+    .menu-lateral:hover {
+        width: 250px;
+    }
+
+    .menu-lateral:hover ul li a .txt-link {
+        display: inline;
+    }
+}
+
+.user-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
