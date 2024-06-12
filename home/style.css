@@ -1,13 +1,8 @@
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #1a1a1a;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
 }
 
 .menu-lateral {
@@ -16,9 +11,9 @@ body {
     top: 0;
     bottom: 0;
     width: 250px;
-    background-color: #333;
+    background-color: #283345;
     overflow-y: auto;
-    transition: width 0.3s;
+    z-index: 1000;
 }
 
 .menu-lateral.minimizado {
@@ -30,7 +25,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 50px;
-    background-color: #444;
+    background-color: #283345;
     cursor: pointer;
 }
 
@@ -47,6 +42,7 @@ body {
 
 .menu-lateral ul li {
     width: 100%;
+    position: relative;
 }
 
 .menu-lateral ul li a {
@@ -56,7 +52,6 @@ body {
     text-decoration: none;
     color: #fff;
     transition: background-color 0.3s;
-    position: relative;
 }
 
 .menu-lateral ul li a:hover {
@@ -71,41 +66,23 @@ body {
     display: none;
 }
 
-.menu-lateral ul li a .txt-link {
-    display: inline;
-    transition: display 0.3s;
-}
-
-@media (max-width: 768px) {
-    .menu-lateral {
-        width: 60px;
-    }
-
-    .menu-lateral ul li a .txt-link {
-        display: none;
-    }
-
-    .menu-lateral:hover {
-        width: 250px;
-    }
-
-    .menu-lateral:hover ul li a .txt-link {
-        display: inline;
-    }
-}
-
 .dropdown-content {
     display: none;
-    position: absolute;
-    background-color: #333;
+    position: fixed;
+    background-color: #283345;
     min-width: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
-    z-index: 1;
+    z-index: 1001;
     border-radius: 8px;
+    border-color: #000;
     color: #fff;
-    top: 50%; /* Ajuste a posição do dropdown para abrir abaixo do botão */
-    left: 0;
+    top: 40%; /* * Ajuste este valor conforme necessário */
+
+}
+
+.menu-lateral.minimizado .dropdown-content {
+    left: 60px; /* Adjust position when the menu is minimized */
 }
 
 .dropdown-content p {
@@ -117,13 +94,14 @@ body {
     display: block;
     margin-top: 10px;
     padding: 8px;
-    background-color: #444;
+    background-color: #ff5555; /* Cor de fundo destacada */
     color: #fff;
     text-align: center;
     border-radius: 4px;
     text-decoration: none;
+    font-weight: bold; /* Adiciona negrito ao texto */
 }
 
 .logout-btn:hover {
-    background-color: #555;
+    background-color: #ff3333; /* Altera a cor de fundo ao passar o mouse */
 }
