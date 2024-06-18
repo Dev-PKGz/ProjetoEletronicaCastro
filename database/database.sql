@@ -12,3 +12,14 @@ CREATE TABLE users (
 
 -- Inserir um usuário de exemplo
 --INSERT INTO users (username, password) VALUES ('admin', PASSWORD('admin123'));
+
+CREATE DATABASE fila_senha;
+
+USE fila_senha;
+
+CREATE TABLE senhas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    senha VARCHAR(10) NOT NULL,
+    data_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    atendida BOOLEAN DEFAULT FALSE
+);
