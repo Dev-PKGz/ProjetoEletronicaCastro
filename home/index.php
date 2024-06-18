@@ -7,9 +7,18 @@ if (!isset($_SESSION['username'])) {
 }
 
 // Função para verificar o nível de acesso
-function has_access($required_sector) {
-    $sectors_hierarchy = ['Ven' => 1, 'Ecom' => 2, 'Dev' => 3, 'Adm' => 4];
-    return isset($_SESSION['sector']) && isset($sectors_hierarchy[$_SESSION['sector']]) && $sectors_hierarchy[$_SESSION['sector']] >= $sectors_hierarchy[$required_sector];
+function has_access($required_sectors) {
+    $sectors_hierarchy = ['Ven' => 1, 'ecom' => 2, 'Dev' => 3, 'Adm' => 4];
+    if (!isset($_SESSION['sector']) || !isset($sectors_hierarchy[$_SESSION['sector']])) {
+        return false;
+    }
+    
+    foreach ($required_sectors as $sector) {
+        if (isset($sectors_hierarchy[$sector]) && $sectors_hierarchy[$_SESSION['sector']] >= $sectors_hierarchy[$sector]) {
+            return true;
+        }
+    }
+    return false;
 }
 ?>
 <!DOCTYPE html>
@@ -34,16 +43,16 @@ function has_access($required_sector) {
             <?php
             // Array que define os itens do menu com níveis de acesso
             $menuItems = [
-                'Home' => ['icon' => 'bi-house-door', 'link' => '../home', 'sector' => 'Dev'],
-                'Dashboard' => ['icon' => 'bi-columns-gap', 'link' => '#', 'sector' => 'Dev'],
-                'Sistema Senha' => ['icon' => 'bi-pass', 'link' => '../manager', 'sector' => 'Dev'],
-                'Configurações' => ['icon' => 'bi-gear', 'link' => '#', 'sector' => 'Dev'],
-                'Conta' => ['icon' => 'bi-person-circle', 'link' => 'javascript:void(0);', 'sector' => 'Ven', 'id' => 'userDropdown']
+                'Home' => ['icon' => 'bi-house-door', 'link' => '#', 'sectors' => ['Dev', 'ecom']],
+                'Dashboard' => ['icon' => 'bi-columns-gap', 'link' => '#', 'sectors' => ['Dev', 'ecom']],
+                'Sistema Senha' => ['icon' => 'bi-pass', 'link' => '../manager', 'sectors' => ['Dev', 'ecom']],
+                'Configurações' => ['icon' => 'bi-gear', 'link' => '#', 'sectors' => ['ecom']],
+                'Conta' => ['icon' => 'bi-person-circle', 'link' => 'javascript:void(0);', 'sectors' => ['Ven', 'Dev', 'ecom'], 'id' => 'userDropdown']
             ];
 
             // Renderiza os itens do menu com base no nível de acesso
             foreach ($menuItems as $name => $item) {
-                if (has_access($item['sector'])) {
+                if (has_access($item['sectors'])) {
                     echo '<li class="item-menu">';
                     echo '<a href="' . $item['link'] . '"';
                     if (isset($item['id'])) echo ' id="' . $item['id'] . '"';

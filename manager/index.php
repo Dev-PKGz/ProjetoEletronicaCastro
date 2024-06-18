@@ -7,9 +7,18 @@ if (!isset($_SESSION['username'])) {
 }
 
 // Função para verificar o nível de acesso
-function has_access($required_sector) {
-    $sectors_hierarchy = ['Ven' => 1, 'Ecom' => 2, 'Dev' => 3, 'Adm' => 4];
-    return isset($_SESSION['sector']) && isset($sectors_hierarchy[$_SESSION['sector']]) && $sectors_hierarchy[$_SESSION['sector']] >= $sectors_hierarchy[$required_sector];
+function has_access($required_sectors) {
+    $sectors_hierarchy = ['Ven' => 1, 'ecom' => 2, 'Dev' => 3, 'Adm' => 4];
+    if (!isset($_SESSION['sector']) || !isset($sectors_hierarchy[$_SESSION['sector']])) {
+        return false;
+    }
+    
+    foreach ($required_sectors as $sector) {
+        if (isset($sectors_hierarchy[$sector]) && $sectors_hierarchy[$_SESSION['sector']] >= $sectors_hierarchy[$sector]) {
+            return true;
+        }
+    }
+    return false;
 }
 ?>
 
@@ -40,18 +49,18 @@ function has_access($required_sector) {
 
         <ul>
             <?php
-            // Array que define os itens do menu com níveis de acesso
-            $menuItems = [
-                'Home' => ['icon' => 'bi-house-door', 'link' => '../home', 'sector' => 'Dev'],
-                'Dashboard' => ['icon' => 'bi-columns-gap', 'link' => '#', 'sector' => 'Dev'],
-                'Sistema Senha' => ['icon' => 'bi-pass', 'link' => '../manager', 'sector' => 'Dev'],
-                'Configurações' => ['icon' => 'bi-gear', 'link' => '#', 'sector' => 'Dev'],
-                'Conta' => ['icon' => 'bi-person-circle', 'link' => 'javascript:void(0);', 'sector' => 'Ven', 'id' => 'userDropdown']
-            ];
+           // Array que define os itens do menu com níveis de acesso
+           $menuItems = [
+            'Home' => ['icon' => 'bi-house-door', 'link' => '#', 'sectors' => ['Dev']],
+            'Dashboard' => ['icon' => 'bi-columns-gap', 'link' => '#', 'sectors' => ['Dev']],
+            'Sistema Senha' => ['icon' => 'bi-pass', 'link' => '../manager', 'sectors' => ['Dev']],
+            'Configurações' => ['icon' => 'bi-gear', 'link' => '#', 'sectors' => ['ecom']],
+            'Conta' => ['icon' => 'bi-person-circle', 'link' => 'javascript:void(0);', 'sectors' => ['Ven', 'Dev'], 'id' => 'userDropdown']
+        ];
 
-            // Renderiza os itens do menu com base no nível de acesso
+             // Renderiza os itens do menu com base no nível de acesso
             foreach ($menuItems as $name => $item) {
-                if (has_access($item['sector'])) {
+                if (has_access($item['sectors'])) {
                     echo '<li class="item-menu">';
                     echo '<a href="' . $item['link'] . '"';
                     if (isset($item['id'])) echo ' id="' . $item['id'] . '"';
@@ -65,7 +74,7 @@ function has_access($required_sector) {
                         if (isset($_SESSION['sector'])) {
                             echo '<p>Setor: ' . $_SESSION['sector'] . '</p>';
                         }
-                        echo '<a href="../home/logout.php" class="logout-btn">Deslogar</a>';
+                        echo '<a href="logout.php" class="logout-btn">Deslogar</a>';
                         echo '</div>';
                     }
                     echo '</li>';
@@ -81,43 +90,12 @@ function has_access($required_sector) {
         <h1>Gerenciador de Fila com Senha</h1>
         <button onclick="gerarSenha()">Gerar Nova Senha</button>
         <button onclick="chamarProximaSenha()">Chamar Próxima Senha</button>
-        <button onclick="rechamarSom()">Rechamar Senha</button>
         <div id="message" class="message"></div>
         <br><br>
         <a href="exibir_senhas.php" target="_blank" class="button">Abrir Exibir Senhas</a>
     </div>
 
-    <script>
-        function gerarSenha() {
-            fetch('gerar_senha.php')
-                .then(response => response.json())
-                .then(data => {
-                    const messageElement = document.getElementById('message');
-                    messageElement.innerText = "Nova senha gerada!";
-                    messageElement.classList.remove('error');
-                    setTimeout(() => { messageElement.innerText = ""; }, 2000);
-                });
-        }
-
-        function chamarProximaSenha() {
-            fetch('chamar_proxima_senha.php')
-                .then(response => response.json())
-                .then(data => {
-                    const messageElement = document.getElementById('message');
-                    messageElement.innerText = data.message;
-                    if (data.message === "Nenhuma senha na fila") {
-                        messageElement.classList.add('error');
-                    } else {
-                        messageElement.classList.remove('error');
-                    }
-                    setTimeout(() => { messageElement.innerText = ""; }, 2000);
-                });
-        }
-
-        function rechamarSom() {
-            const audio = new Audio('alert.mp3');
-            audio.play();
-        }
-    </script>
+    <script src="javascript/gerar_senha.js"></script>
+    <script src="javascript/chamar_proxima_senha.js"></script>
 </body>
 </html>
