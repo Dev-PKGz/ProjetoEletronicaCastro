@@ -28,7 +28,7 @@ function has_access($required_sectors) {
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../home/style.css">
+    <link rel="stylesheet" href="../home/css/style.css">
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
@@ -51,7 +51,7 @@ function has_access($required_sectors) {
             <?php
            // Array que define os itens do menu com níveis de acesso
            $menuItems = [
-            'Home' => ['icon' => 'bi-house-door', 'link' => '#', 'sectors' => ['Dev']],
+            'Home' => ['icon' => 'bi-house-door', 'link' => '../home', 'sectors' => ['Dev']],
             'Dashboard' => ['icon' => 'bi-columns-gap', 'link' => '#', 'sectors' => ['Dev']],
             'Sistema Senha' => ['icon' => 'bi-pass', 'link' => '../manager', 'sectors' => ['Dev']],
             'Configurações' => ['icon' => 'bi-gear', 'link' => '#', 'sectors' => ['ecom']],
@@ -84,7 +84,7 @@ function has_access($required_sectors) {
         </ul>
     </nav><!--menu-lateral-->
 
-    <script src="../home/menu.js"></script>
+    <script src="../home/javascript/menu.js"></script>
 
     <div class="container">
         <h1>Gerenciador de Fila com Senha</h1>
