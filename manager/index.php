@@ -12,20 +12,28 @@ function has_access($required_sector) {
     return isset($_SESSION['sector']) && isset($sectors_hierarchy[$_SESSION['sector']]) && $sectors_hierarchy[$_SESSION['sector']] >= $sectors_hierarchy[$required_sector];
 }
 ?>
+
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAEC - Home</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../home/style.css">
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+    <title>Gerenciador de Fila com Senha</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 600px; margin: auto; padding: 20px; text-align: center; }
+        button { padding: 10px 20px; font-size: 18px; margin: 10px; }
+        .message { font-size: 18px; color: green; }
+        .error { color: red; }
+    </style>
 </head>
 <body>
-    <nav class="menu-lateral">
+<nav class="menu-lateral">
         <div class="btn-expandir" id="btn-exp">
             <i class="bi bi-list" id="btn-exp"></i>
         </div><!--btn-expandir-->
@@ -57,7 +65,7 @@ function has_access($required_sector) {
                         if (isset($_SESSION['sector'])) {
                             echo '<p>Setor: ' . $_SESSION['sector'] . '</p>';
                         }
-                        echo '<a href="logout.php" class="logout-btn">Deslogar</a>';
+                        echo '<a href="../home/logout.php" class="logout-btn">Deslogar</a>';
                         echo '</div>';
                     }
                     echo '</li>';
@@ -67,6 +75,49 @@ function has_access($required_sector) {
         </ul>
     </nav><!--menu-lateral-->
 
-    <script src="menu.js"></script>
+    <script src="../home/menu.js"></script>
+
+    <div class="container">
+        <h1>Gerenciador de Fila com Senha</h1>
+        <button onclick="gerarSenha()">Gerar Nova Senha</button>
+        <button onclick="chamarProximaSenha()">Chamar Próxima Senha</button>
+        <button onclick="rechamarSom()">Rechamar Senha</button>
+        <div id="message" class="message"></div>
+        <br><br>
+        <a href="exibir_senhas.php" target="_blank" class="button">Abrir Exibir Senhas</a>
+    </div>
+
+    <script>
+        function gerarSenha() {
+            fetch('gerar_senha.php')
+                .then(response => response.json())
+                .then(data => {
+                    const messageElement = document.getElementById('message');
+                    messageElement.innerText = "Nova senha gerada!";
+                    messageElement.classList.remove('error');
+                    setTimeout(() => { messageElement.innerText = ""; }, 2000);
+                });
+        }
+
+        function chamarProximaSenha() {
+            fetch('chamar_proxima_senha.php')
+                .then(response => response.json())
+                .then(data => {
+                    const messageElement = document.getElementById('message');
+                    messageElement.innerText = data.message;
+                    if (data.message === "Nenhuma senha na fila") {
+                        messageElement.classList.add('error');
+                    } else {
+                        messageElement.classList.remove('error');
+                    }
+                    setTimeout(() => { messageElement.innerText = ""; }, 2000);
+                });
+        }
+
+        function rechamarSom() {
+            const audio = new Audio('alert.mp3');
+            audio.play();
+        }
+    </script>
 </body>
 </html>
