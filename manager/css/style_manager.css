@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #c9c9c9;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0; /* Remove margens do body */
+    padding: 0; /* Remove paddings do body */
+}
+
+/* Estilos para o container */
+.container {
+    max-width: 600px;
+    margin: 80px auto 20px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #f4f4f4;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 800px) {
+    .container {
+        margin: 20px;
+        padding: 15px;
+    }
+}
+
+/* Estilos para os botões */
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    margin: 10px;
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #007bff;
+}
+
+@media (max-width: 600px) {
+    button {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+}
+
+/* Estilos para o link com classe 'button' */
+a.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    margin: 10px;
+    background-color: #b42400;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+a.button:hover {
+    background-color: #fa3200;
+}
+
+@media (max-width: 600px) {
+    a.button {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+}
+
+/* Estilos para as mensagens */
+.message {
+    font-size: 18px;
+    color: green;
+    margin: 20px 0;
+}
+
+.error {
+    color: red;
+}
+
+/* Adiciona margens menores em telas menores */
+@media (max-width: 600px) {
+    .message {
+        font-size: 16px;
+        margin: 15px 0;
+    }
+}

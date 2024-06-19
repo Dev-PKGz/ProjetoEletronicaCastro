@@ -47,7 +47,7 @@ function has_access($required_sectors) {
                 'Dashboard' => ['icon' => 'bi-columns-gap', 'link' => '#', 'sectors' => ['Dev', 'ecom']],
                 'Sistema Senha' => ['icon' => 'bi-pass', 'link' => '../manager', 'sectors' => ['Dev', 'ecom']],
                 'Configurações' => ['icon' => 'bi-gear', 'link' => '#', 'sectors' => ['ecom']],
-                'Conta' => ['icon' => 'bi-person-circle', 'link' => 'javascript:void(0);', 'sectors' => ['Ven', 'Dev', 'ecom'], 'id' => 'userDropdown']
+                'Conta' => ['icon' => 'bi-person-circle', 'link' => '#', 'sectors' => ['Ven', 'Dev', 'ecom']],
             ];
 
             // Renderiza os itens do menu com base no nível de acesso
@@ -60,19 +60,18 @@ function has_access($required_sectors) {
                     echo '<span class="icon"><i class="bi ' . $item['icon'] . '"></i></span>';
                     echo '<span class="txt-link">' . $name . '</span>';
                     echo '</a>';
-                    if ($name == 'Conta') {
-                        echo '<div id="userDropdownContent" class="dropdown-content">';
-                        echo '<p>Nome de usuário: ' . $_SESSION['username'] . '</p>';
-                        if (isset($_SESSION['sector'])) {
-                            echo '<p>Setor: ' . $_SESSION['sector'] . '</p>';
-                        }
-                        echo '<a href="logout.php" class="logout-btn">Deslogar</a>';
-                        echo '</div>';
-                    }
                     echo '</li>';
                 }
             }
             ?>
+                        <!-- Item Logout -->
+                        <li class="item-menu">
+                <a href="logout.php">
+                    <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
+                    <span class="txt-link">Logout</span>
+                </a>
+            </li>
+
         </ul>
     </nav><!--menu-lateral-->
 

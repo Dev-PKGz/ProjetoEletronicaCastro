@@ -1,107 +1,157 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
-    margin: 0;
-    padding: 0;
+    font-family: Arial, sans-serif; /* Define a fonte padrão para Arial, com fallback para sans-serif */
+    background-color: #c9c9c9; /* Define a cor de fundo do body */
+    margin: 0; /* Remove a margem padrão do body */
+    padding: 0; /* Remove o padding padrão do body */
 }
 
 .menu-lateral {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 250px;
-    background-color: #283345;
-    overflow-y: auto;
-    z-index: 1000;
+    position: fixed; /* Posiciona o menu lateral fixamente na tela */
+    left: 0; /* Alinha o menu ao lado esquerdo */
+    top: 0; /* Alinha o menu ao topo */
+    bottom: 0; /* Alinha o menu ao fundo */
+    width: 250px; /* Define a largura do menu */
+    background-color: #283345; /* Define a cor de fundo do menu */
+    overflow-y: auto; /* Adiciona barra de rolagem vertical, se necessário */
+    z-index: 1000; /* Define a prioridade de sobreposição */
+    transition: width 0.3s, height 0.3s, top 0.3s, bottom 0.3s; /* Adiciona transições suaves para mudanças de tamanho e posição */
 }
 
 .menu-lateral.minimizado {
-    width: 60px;
+    width: 60px; /* Define a largura do menu quando minimizado */
 }
 
 .menu-lateral .btn-expandir {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    background-color: #283345;
-    cursor: pointer;
+    display: flex; /* Utiliza flexbox para alinhamento */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 50px; /* Define a altura do botão */
+    background-color: #283345; /* Define a cor de fundo do botão */
+    cursor: pointer; /* Mostra o cursor de pointer ao passar o mouse */
 }
 
 .menu-lateral .btn-expandir i {
-    font-size: 24px;
-    color: #fff;
+    font-size: 24px; /* Define o tamanho da fonte do ícone */
+    color: #fff; /* Define a cor do ícone */
 }
 
 .menu-lateral ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+    list-style-type: none; /* Remove as marcas de lista padrão */
+    padding: 0; /* Remove o padding padrão */
+    margin: 0; /* Remove a margem padrão */
 }
 
 .menu-lateral ul li {
-    width: 100%;
-    position: relative;
+    width: 100%; /* Define a largura do item da lista para 100% */
+    position: relative; /* Define a posição relativa para o item */
 }
 
 .menu-lateral ul li a {
-    display: flex;
-    align-items: center;
-    padding: 15px 20px;
-    text-decoration: none;
-    color: #fff;
-    transition: background-color 0.3s;
+    display: flex; /* Utiliza flexbox para alinhamento */
+    align-items: center; /* Alinha os itens centralmente */
+    padding: 15px 20px; /* Adiciona padding interno ao link */
+    text-decoration: none; /* Remove a decoração do texto (sublinhado) */
+    color: #fff; /* Define a cor do texto */
+    transition: background-color 0.3s; /* Adiciona uma transição suave para a mudança de cor de fundo */
 }
 
 .menu-lateral ul li a:hover {
-    background-color: #555;
+    background-color: #555; /* Altera a cor de fundo ao passar o mouse */
 }
 
 .menu-lateral ul li a .icon {
-    margin-right: 10px;
+    margin-right: 10px; /* Adiciona margem à direita do ícone */
 }
 
 .menu-lateral.minimizado ul li a .txt-link {
-    display: none;
+    display: none; /* Oculta o texto do link quando o menu está minimizado */
 }
 
 .dropdown-content {
-    display: none;
-    position: fixed;
-    background-color: #283345;
-    min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 12px 16px;
-    z-index: 1001;
-    border-radius: 8px;
-    border-color: #000;
-    color: #fff;
-    top: 40%; /* * Ajuste este valor conforme necessário */
-
+    display: none; /* Oculta o conteúdo do dropdown por padrão */
+    position: fixed; /* Posiciona o dropdown fixamente */
+    background-color: #283345; /* Define a cor de fundo do dropdown */
+    min-width: 200px; /* Define a largura mínima do dropdown */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Adiciona uma sombra ao dropdown */
+    padding: 12px 16px; /* Adiciona padding interno ao dropdown */
+    z-index: 1001; /* Define a prioridade de sobreposição */
+    border-radius: 8px; /* Define bordas arredondadas */
+    border-color: #000; /* Define a cor da borda */
+    color: #fff; /* Define a cor do texto */
+    top: 40%; /* Ajusta a posição vertical */
 }
 
 .menu-lateral.minimizado .dropdown-content {
-    left: 60px; /* Adjust position when the menu is minimized */
+    left: 60px; /* Ajusta a posição quando o menu está minimizado */
 }
 
 .dropdown-content p {
-    margin: 0;
-    padding: 8px 0;
+    margin: 0; /* Remove a margem do parágrafo */
+    padding: 8px 0; /* Adiciona padding interno ao parágrafo */
 }
 
-.logout-btn {
-    display: block;
-    margin-top: 10px;
-    padding: 8px;
-    background-color: #ff5555; /* Cor de fundo destacada */
-    color: #fff;
-    text-align: center;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: bold; /* Adiciona negrito ao texto */
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .menu-lateral {
+        width: 60px; /* Menu lateral minimizado por padrão em telas menores */
+    }
+
+    .menu-lateral .btn-expandir {
+        height: 50px; /* Define a altura do botão */
+    }
+
+    .menu-lateral ul li a .txt-link {
+        display: none; /* Oculta o texto do link */
+    }
+
+    .menu-lateral ul li a {
+        padding: 15px 10px; /* Ajusta o padding interno */
+    }
 }
 
-.logout-btn:hover {
-    background-color: #ff3333; /* Altera a cor de fundo ao passar o mouse */
+@media (max-width: 480px) {
+    .menu-lateral {
+        width: 100%; /* Define a largura para 100% */
+        height: 60px; /* Define a altura para 60px */
+        top: auto; /* Remove o alinhamento superior */
+        bottom: 0; /* Alinha o menu na parte inferior */
+        display: flex; /* Utiliza flexbox para alinhamento */
+        justify-content: space-around; /* Distribui os itens igualmente */
+        flex-direction: row; /* Alinha os itens horizontalmente */
+        align-items: center; /* Centraliza os itens verticalmente */
+        overflow-y: hidden; /* Oculta a barra de rolagem vertical */
+        overflow-x: auto; /* Adiciona barra de rolagem horizontal, se necessário */
+    }
+
+    .menu-lateral.minimizado {
+        width: 100%; /* Define a largura para 100% */
+        height: 60px; /* Define a altura para 60px */
+    }
+
+    .menu-lateral ul {
+        display: flex; /* Utiliza flexbox para alinhamento */
+        flex-direction: row; /* Alinha os itens horizontalmente */
+        width: 100%; /* Define a largura para 100% */
+        padding: 0; /* Remove o padding */
+    }
+
+    .menu-lateral ul li {
+        display: inline-block; /* Define os itens como blocos inline */
+    }
+
+    .menu-lateral ul li a {
+        padding: 10px; /* Ajusta o padding interno */
+        justify-content: center; /* Centraliza os itens horizontalmente */
+        flex-direction: column; /* Alinha os itens verticalmente */
+    }
+
+    .menu-lateral .btn-expandir {
+        display: none; /* Oculta o botão de expandir */
+    }
+
+    .dropdown-content {
+        position: absolute; /* Define o dropdown como absoluto */
+        width: calc(100% - 40px); /* Ajusta a largura do dropdown */
+        left: 20px; /* Define a posição à esquerda */
+    }
 }
