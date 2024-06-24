@@ -19,7 +19,7 @@ function imprimirSenha(senha) {
     var janelaImpressao = window.open('', '', 'height=400,width=600');
     janelaImpressao.document.write('<html><head><title>Imprimir Senha</title>');
     janelaImpressao.document.write('</head><body >');
-    janelaImpressao.document.write('<h1>Senha Gerada ' + senha + '</h1>');
+    janelaImpressao.document.write('<h1>' + senha + '</h1>');
     janelaImpressao.document.write('</body></html>');
     janelaImpressao.document.close();
     janelaImpressao.print();
