@@ -1,4 +1,6 @@
 <?php
+header('Content-Type: application/json');
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -9,7 +11,8 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Verificar conexão
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    echo json_encode(['error' => $conn->connect_error]);
+    exit();
 }
 
 // Gerar nova senha
@@ -28,7 +31,7 @@ if ($conn->query($sql) === TRUE) {
     $proxima_senha = isset($senhas[1]) ? $senhas[1] : "Nenhuma";
 
     echo json_encode([
-        'senha_atual' => $senha_atual,
+        'senha_atual' => $nova_senha,
         'proxima_senha' => $proxima_senha
     ]);
 } else {

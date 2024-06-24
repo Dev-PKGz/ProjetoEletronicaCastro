@@ -74,7 +74,6 @@ function has_access($required_sectors) {
 
     <div class="container">
         <h1>Sistema de Senha e Fila</h1>
-       <!-- <button onclick="gerarSenha()" class="button">Gerar Nova Senha</button>-->
         <button onclick="chamarProximaSenha()" class="button">Chamar Próxima Senha</button>
         <div id="message" class="message"></div>
         <br><br>
