@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -12,8 +14,16 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Marcar a senha atual como atendida
-$conn->query("UPDATE senhas SET atendida = TRUE WHERE atendida = FALSE ORDER BY id ASC LIMIT 1");
+// Verificar se o usuário está logado
+if (!isset($_SESSION['username'])) {
+    die("Usuário não está logado.");
+}
+
+// Nome do usuário logado
+$usuario = $_SESSION['username'];
+
+// Marcar a senha atual como atendida com o nome do usuário
+$conn->query("UPDATE senhas SET atendida = TRUE, usuario_atendeu = '$usuario' WHERE atendida = FALSE ORDER BY id ASC LIMIT 1");
 
 // Obter senhas atuais
 $result = $conn->query("SELECT senha FROM senhas WHERE atendida = FALSE ORDER BY id ASC");

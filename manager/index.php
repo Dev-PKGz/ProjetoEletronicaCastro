@@ -4,6 +4,7 @@ session_start();
 if (!isset($_SESSION['username'])) {
     header("Location: /index.php");
     exit();
+    $_SESSION['username'] = $nomeDoUsuarioLogado;
 }
 
 // Função para verificar o nível de acesso
@@ -20,6 +21,7 @@ function has_access($required_sectors) {
     }
     return false;
 }
+
 ?>
 
 <!DOCTYPE html>
