@@ -47,12 +47,11 @@ function has_access($required_sectors) {
             <?php
            // Array que define os itens do menu com níveis de acesso
            $menuItems = [
-            'Home' => ['icon' => 'bi-house-door', 'link' => '../home', 'sectors' => ['Dev']],
+            'Home' => ['icon' => 'bi-house-door', 'link' => '../home', 'sectors' => ['Dev', 'ecom', 'Ven']],
             'Dashboard' => ['icon' => 'bi-columns-gap', 'link' => '#', 'sectors' => ['Dev']],
-            'Sistema Senha' => ['icon' => 'bi-pass', 'link' => '../manager', 'sectors' => ['Dev']],
-            'Configurações' => ['icon' => 'bi-gear', 'link' => '#', 'sectors' => ['ecom']],
-            'Conta' => ['icon' => 'bi-person-circle', 'link' => '#', 'sectors' => ['Ven', 'Dev']],
-            'Logout' => ['icon' => 'bi-box-arrow-right', 'link' => '..//home/logout.php', 'sectors' => ['Ven', 'Dev', 'ecom']]
+            'Sistema Senha' => ['icon' => 'bi-pass', 'link' => '../manager', 'sectors' => ['Dev', 'Ven']],
+            'Configurações' => ['icon' => 'bi-gear', 'link' => '#', 'sectors' => ['Dev']],
+            'Conta' => ['icon' => 'bi-person-circle', 'link' => '#', 'sectors' => ['Dev', 'ecom', 'Ven']] 
         ];
 
              // Renderiza os itens do menu com base no nível de acesso
@@ -69,6 +68,14 @@ function has_access($required_sectors) {
                 }
             }
             ?>
+                        <!-- Item Logout -->
+                        <li class="item-menu">
+                <a href="logout.php">
+                    <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
+                    <span class="txt-link">Logout</span>
+                </a>
+            </li>
+
         </ul>
     </nav><!--menu-lateral-->
 
