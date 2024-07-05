@@ -1,26 +1,9 @@
 <?php
-session_start();
 
-if (!isset($_SESSION['username'])) {
-    header("Location: /index.php");
-    exit();
-    $_SESSION['username'] = $nomeDoUsuarioLogado;
-}
+require_once '/xampp/htdocs/connections/check_page_access'; // Certifique-se de incluir o arquivo com as funções
 
-// Função para verificar o nível de acesso
-function has_access($required_sectors) {
-    $sectors_hierarchy = ['Ven' => 1, 'ecom' => 2, 'Dev' => 3, 'Adm' => 4];
-    if (!isset($_SESSION['sector']) || !isset($sectors_hierarchy[$_SESSION['sector']])) {
-        return false;
-    }
-    
-    foreach ($required_sectors as $sector) {
-        if (isset($sectors_hierarchy[$sector]) && $sectors_hierarchy[$_SESSION['sector']] >= $sectors_hierarchy[$sector]) {
-            return true;
-        }
-    }
-    return false;
-}
+// Verifica o acesso à página
+check_page_access(['Adm']);
 
 ?>
 
@@ -45,14 +28,16 @@ function has_access($required_sectors) {
 
         <ul>
             <?php
+
            // Array que define os itens do menu com níveis de acesso
            $menuItems = [
-            'Home' => ['icon' => 'bi-house-door', 'link' => '../home', 'sectors' => ['Dev', 'ecom', 'Ven']],
-            'Dashboard' => ['icon' => 'bi-columns-gap', 'link' => '#', 'sectors' => ['Dev']],
+            'Home' => ['icon' => 'bi-house-door', 'link' => '../home', 'sectors' => ['Dev','Ven', 'ecom', 'Adm']],
+            'Dashboard' => ['icon' => 'bi-columns-gap', 'link' => '#', 'sectors' => ['Dev', 'Adm']],
             'Sistema Senha' => ['icon' => 'bi-pass', 'link' => '../manager', 'sectors' => ['Dev', 'Ven']],
-            'Configurações' => ['icon' => 'bi-gear', 'link' => '#', 'sectors' => ['Dev']],
-            'Conta' => ['icon' => 'bi-person-circle', 'link' => '#', 'sectors' => ['Dev', 'ecom', 'Ven']] 
+            'Configurações' => ['icon' => 'bi-gear', 'link' => '#', 'sectors' => ['Dev', 'Adm']],
+            'Conta' => ['icon' => 'bi-person-circle', 'link' => '#', 'sectors' => ['Dev', 'Ven', 'ecom', 'Adm']]            
         ];
+
 
              // Renderiza os itens do menu com base no nível de acesso
             foreach ($menuItems as $name => $item) {
@@ -70,7 +55,7 @@ function has_access($required_sectors) {
             ?>
                         <!-- Item Logout -->
                         <li class="item-menu">
-                <a href="logout.php">
+                <a href="../connections/logout.php">
                     <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
                     <span class="txt-link">Logout</span>
                 </a>

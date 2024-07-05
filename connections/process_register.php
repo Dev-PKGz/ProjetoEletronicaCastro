@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         $_SESSION['username'] = $user;
-        header("Location: ../home");
+        header("Location: ../index.php");
         exit();
     } else {
         header("Location: ../register?error=Erro ao registrar usuário");
