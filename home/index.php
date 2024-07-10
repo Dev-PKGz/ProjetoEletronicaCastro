@@ -1,6 +1,7 @@
 <?php
-require_once '/xampp/htdocs/connections/check_page_access'; // Certifique-se de incluir o arquivo com as funções
+require_once '/xampp/htdocs/connections/check_page_access.php'; // Certifique-se de incluir o arquivo com as funções
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -25,7 +26,7 @@ require_once '/xampp/htdocs/connections/check_page_access'; // Certifique-se de 
             $menuItems = [
                 'Home' => ['icon' => 'bi-house-door', 'link' => '../home', 'sectors' => ['Dev','Ven', 'ecom', 'Adm']],
                 'Dashboard' => ['icon' => 'bi-columns-gap', 'link' => '#', 'sectors' => ['Dev', 'Adm']],
-                'Sistema Senha' => ['icon' => 'bi-pass', 'link' => '../manager', 'sectors' => ['Dev', 'Ven']],
+                'Sistema Senha' => ['icon' => 'bi-pass', 'link' => '../painel_senhas', 'sectors' => ['Dev', 'Ven']],
                 'Configurações' => ['icon' => 'bi-gear', 'link' => '#', 'sectors' => ['Dev', 'Adm']],
                 'Conta' => ['icon' => 'bi-person-circle', 'link' => '#', 'sectors' => ['Dev', 'Ven', 'ecom', 'Adm']]            
             ];
