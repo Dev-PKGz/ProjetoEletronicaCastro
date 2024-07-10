@@ -132,10 +132,12 @@ $result = $conn->query($sql);
                     <h3>Update Sector</h3>
                     <label for="sector">Sector:</label>
                     <select name="sector">
-                        <option value="HR">HR</option>
-                        <option value="Finance">Finance</option>
-                        <option value="IT">IT</option>
+                        <option value="Dev">Desenvolvedor</option>
+                        <option value="Adm">Administração</option>
+                        <option value="Financeiro">Financeiro</option>
                         <option value="Marketing">Marketing</option>
+                        <option value="ecom">E-Com</option>
+                        <option value="Ven">Vendedor</option>
                     </select><br><br>
                     <input type="submit" name="update_sector" value="Update Sector"><br><br>
                 </form>
