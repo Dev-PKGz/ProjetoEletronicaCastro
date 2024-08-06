@@ -1,50 +1,9 @@
-/* Reset de estilos básicos */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Estilo global */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    padding: 20px;
-}
-
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h2, h3 {
-    color: #333;
-    margin-bottom: 10px;
-}
-
 table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
 
-table th, table td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-table th {
-    background-color: #f2f2f2;
-}
-
-table tr:hover {
-    background-color: #f9f9f9;
-}
 
 button {
     padding: 8px 12px;
@@ -57,6 +16,19 @@ button {
 
 button:hover {
     background-color: #45a049;
+}
+
+.delete-button {
+    padding: 8px 12px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.delete-button:hover {
+    background-color: #9c0000;
 }
 
 /* Modal */
@@ -131,3 +103,4 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
     background-color: #0056b3;
 }
+

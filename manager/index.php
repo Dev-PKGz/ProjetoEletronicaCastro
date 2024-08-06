@@ -1,111 +1,64 @@
 <?php
 include('../connections/acess_db.php');
+include('../connections/functions.php');
+require_once '/xampp/htdocs/connections/check_page_access.php'; // Certifique-se de incluir o arquivo com as funções
 
-// Função para atualizar o email do usuário
-function updateEmail($conn, $id, $email) {
-    $sql = "UPDATE users SET email=? WHERE id=?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("si", $email, $id);
-    
-    if ($stmt->execute()) {
-        echo "Email updated successfully.";
-    } else {
-        echo "Error updating email: " . $conn->error;
-    }
-}
-
-// Função para atualizar a senha do usuário
-function updatePassword($conn, $id, $password) {
-    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-    $sql = "UPDATE users SET password=? WHERE id=?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("si", $hashedPassword, $id);
-    
-    if ($stmt->execute()) {
-        echo "Password updated successfully.";
-    } else {
-        echo "Error updating password: " . $conn->error;
-    }
-}
-
-// Função para atualizar o setor do usuário
-function updateSector($conn, $id, $sector) {
-    $sql = "UPDATE users SET sector=? WHERE id=?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("si", $sector, $id);
-    
-    if ($stmt->execute()) {
-        echo "Sector updated successfully.";
-    } else {
-        echo "Error updating sector: " . $conn->error;
-    }
-}
-
-// Checando qual formulário foi submetido
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id = $_POST['id'];
-    
-    if (isset($_POST['update_email'])) {
-        $email = $_POST['email'];
-        updateEmail($conn, $id, $email);
-    } elseif (isset($_POST['update_password'])) {
-        $password = $_POST['password'];
-        updatePassword($conn, $id, $password);
-    } elseif (isset($_POST['update_sector'])) {
-        $sector = $_POST['sector'];
-        updateSector($conn, $id, $sector);
-    }
-}
-
-// Listando os usuários
-$sql = "SELECT id, username, email, sector FROM users";
-$result = $conn->query($sql);
+// Verifica o acesso à página
+check_page_access(['Dev', 'Adm']);
 
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Panel</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="modal.css">
-    <script>
-        function showModal(userId) {
-            document.getElementById('modal').style.display = 'flex';
-            document.getElementById('user-id').value = userId;
-        }
-
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
-                // Fecha o modal clicando fora dele (na área escura)
-                window.onclick = function(event) {
-            var modals = document.getElementsByClassName('modal');
-            for (var i = 0; i < modals.length; i++) {
-                if (event.target == modals[i]) {
-                    modals[i].style.display = "none";
-                }
-            }
-        }
-    </script>
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../home/css/style.css">
+    <link rel="stylesheet" href="../painel_senhas//css/style_manager.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <script src="../home/javascript/menu.js"></script>
+    <script src="../js/modal.js"></script>
+    <title>Painel Adminsitrador</title>
 </head>
 <body>
-    <div class="container">
-        <h2>Admin Panel</h2>
+    <nav class="menu-lateral">
+        <div class="btn-expandir" id="btn-exp">
+            <i class="bi bi-list" id="btn-exp"></i>
+        </div><!--btn-expandir-->
 
-        <h3>Users List</h3>
+        <ul>
+            <?php
+            include('../connections/menu.php');
+            ?>
+            <!-- Item Logout -->
+            <li class="item-menu">
+                <a href="../connections/logout.php">
+                    <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
+                    <span class="txt-link">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </nav><!--menu-lateral-->
+
+    <div class="container">
+        <h2>Painel de Administração de Ususarios</h2>
+
+        <h3>Lista de Usuario</h3>
         <table>
             <tr>
-                <th>ID</th>
-                <th>Username</th>
+                <th>Nome</th>
                 <th>Email</th>
-                <th>Sector</th>
-                <th>Action</th>
+                <th>Setor</th>
+                <th>Ação</th>
             </tr>
             <?php
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                    echo "<tr><td>".$row["id"]."</td><td>".$row["username"]."</td><td>".$row["email"]."</td><td>".$row["sector"]."</td><td><button onclick='showModal(".$row["id"].")'>Alterar</button></td></tr>";
+                    echo "<tr><td>".$row["username"]."</td><td>".$row["email"]."</td><td>".$row["sector"]."</td><td><button onclick='showModal(".$row["id"].")'>Alterar</button><form method='post' action='' style='display:inline; margin-left: 10px;'><input type='hidden' name='id' value='".$row["id"]."'><button type='submit' name='delete_user' class='delete-button'>Deletar</button></form></td></tr>";
                 }
             } else {
                 echo "<tr><td colspan='5'>No users found</td></tr>";
