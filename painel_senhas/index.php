@@ -48,7 +48,7 @@ check_page_access(['Ven', 'Dev', 'ecom']);
         <button onclick="chamarProximaSenha()" class="button">Chamar Próxima Senha</button>
         <div id="message" class="message"></div>
         <br><br>
-        <a href="exibir_senhas" target="_blank" class="button">Abrir Exibir Senhas</a>
+        <a href="exibir_senhas.php" target="_blank" class="button">Abrir Exibir Senhas</a>
     </div>
 
     <script src="javascript/gerar_senha.js"></script>
