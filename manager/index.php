@@ -5,13 +5,12 @@ require_once '/xampp/htdocs/connections/check_page_access.php'; // Certifique-se
 
 // Verifica o acesso à página
 check_page_access(['Dev', 'Adm']);
-
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../home/css/style.css">
@@ -22,7 +21,7 @@ check_page_access(['Dev', 'Adm']);
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
     <script src="../home/javascript/menu.js"></script>
     <script src="../js/modal.js"></script>
-    <title>Painel Adminsitrador</title>
+    <title>Painel Administrador</title>
 </head>
 <body>
     <nav class="menu-lateral">
@@ -44,10 +43,15 @@ check_page_access(['Dev', 'Adm']);
         </ul>
     </nav><!--menu-lateral-->
 
-    <div class="container">
-        <h2>Painel de Administração de Ususarios</h2>
+    <!-- Adicionando o botão Configuração Anuncio no topo -->
+    <div class="config-anuncio-container">
+        <a href="../painel_senhas/anuncio/" target="_blank" class="button2"><i class="bi bi-gear"></i> Configuração Anuncio</a>
+    </div>
 
-        <h3>Lista de Usuario</h3>
+    <div class="container">
+        <h2>Painel de Administração de Usuários</h2>
+
+        <h3>Lista de Usuários</h3>
         <table>
             <tr>
                 <th>Nome</th>
@@ -61,7 +65,7 @@ check_page_access(['Dev', 'Adm']);
                     echo "<tr><td>".$row["username"]."</td><td>".$row["email"]."</td><td>".$row["sector"]."</td><td><button onclick='showModal(".$row["id"].")'>Alterar</button><form method='post' action='' style='display:inline; margin-left: 10px;'><input type='hidden' name='id' value='".$row["id"]."'><button type='submit' name='delete_user' class='delete-button'>Deletar</button></form></td></tr>";
                 }
             } else {
-                echo "<tr><td colspan='5'>No users found</td></tr>";
+                echo "<tr><td colspan='5'>Nenhum usuário encontrado</td></tr>";
             }
             ?>
         </table>
@@ -72,18 +76,18 @@ check_page_access(['Dev', 'Adm']);
                 <form method="post" action="index.php">
                     <input type="hidden" id="user-id" name="id">
                     
-                    <h3>Update Email</h3>
+                    <h3>Atualizar Email</h3>
                     <label for="email">Email:</label>
                     <input type="email" name="email"><br><br>
-                    <input type="submit" name="update_email" value="Update Email"><br><br>
+                    <input type="submit" name="update_email" value="Atualizar Email"><br><br>
                     
-                    <h3>Update Password</h3>
-                    <label for="password">Password:</label>
+                    <h3>Atualizar Senha</h3>
+                    <label for="password">Senha:</label>
                     <input type="password" name="password"><br><br>
-                    <input type="submit" name="update_password" value="Update Password"><br><br>
+                    <input type="submit" name="update_password" value="Atualizar Senha"><br><br>
                     
-                    <h3>Update Sector</h3>
-                    <label for="sector">Sector:</label>
+                    <h3>Atualizar Setor</h3>
+                    <label for="sector">Setor:</label>
                     <select name="sector">
                         <option value="Dev">Desenvolvedor</option>
                         <option value="Adm">Administração</option>
@@ -92,7 +96,7 @@ check_page_access(['Dev', 'Adm']);
                         <option value="ecom">E-Com</option>
                         <option value="Ven">Vendedor</option>
                     </select><br><br>
-                    <input type="submit" name="update_sector" value="Update Sector"><br><br>
+                    <input type="submit" name="update_sector" value="Atualizar Setor"><br><br>
                 </form>
             </div>
         </div>

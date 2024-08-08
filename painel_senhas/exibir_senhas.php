@@ -33,11 +33,14 @@
         </div>
 
         <div class="senha-container">
-            <div class="senha">
-                <h2>Senha Atual: <span id="senhaAtual"></span></h2>
+            <div class="hora-atual" id="horaAtual">
+                <!-- Horário atual será inserido aqui -->
             </div>
             <div class="senha">
-                <h2>Próxima Senha: <span id="proximaSenha"></span></h2>
+                <h2>Senha Atual: <span id="senhaAtual">001</span></h2>
+            </div>
+            <div class="senha">
+                <h2>Próxima Senha: <span id="proximaSenha">002</span></h2>
             </div>
         </div>
     </div>
@@ -48,6 +51,35 @@
         Seu navegador não suporta áudio HTML5.
     </audio>
 
-    <script src="javascript/exibir_senhas.js"></script>
+    <script>
+        // Função para atualizar o horário atual
+        function atualizarHora() {
+            const elementoHora = document.getElementById('horaAtual');
+            const agora = new Date();
+            const hora = agora.getHours().toString().padStart(2, '0');
+            const minutos = agora.getMinutes().toString().padStart(2, '0');
+            const segundos = agora.getSeconds().toString().padStart(2, '0');
+            elementoHora.textContent = `Horario: ${hora}:${minutos}:${segundos}`;
+        }
+
+        // Atualiza o horário a cada segundo
+        setInterval(atualizarHora, 1000);
+
+        // Simulação de atualização das senhas
+        document.addEventListener('DOMContentLoaded', function() {
+            const senhaAtual = document.getElementById('senhaAtual');
+            const proximaSenha = document.getElementById('proximaSenha');
+
+            let atual = 1;
+            let proxima = 2;
+
+            setInterval(() => {
+                senhaAtual.textContent = String(atual).padStart(3, '0');
+                proximaSenha.textContent = String(proxima).padStart(3, '0');
+                atual++;
+                proxima++;
+            }, 5000); // Atualiza a cada 5 segundos
+        });
+    </script>
 </body>
 </html>

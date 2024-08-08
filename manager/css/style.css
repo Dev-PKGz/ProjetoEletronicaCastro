@@ -4,7 +4,6 @@ table {
     margin-bottom: 20px;
 }
 
-
 button {
     padding: 8px 12px;
     background-color: #4CAF50;
@@ -104,3 +103,40 @@ form input[type="submit"]:hover {
     background-color: #0056b3;
 }
 
+/* Botão Configuração Anuncio no topo */
+.config-anuncio-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.config-anuncio-container .button2 {
+    margin: 0;
+}
+
+/* Estilo do botão Configuração Anuncio */
+.button2 {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #007bff; /* Cor do botão */
+    color: #fff; /* Cor do texto */
+    text-decoration: none; /* Remove o sublinhado */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 16px;
+}
+
+.button2 i {
+    margin-right: 8px; /* Espaço entre o ícone e o texto */
+    font-size: 20px; /* Tamanho do ícone */
+}
+
+.button2:hover {
+    background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+    transform: scale(1.05); /* Leve zoom ao passar o mouse */
+}
