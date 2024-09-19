@@ -19,6 +19,23 @@
         <div id="message" class="message"></div>
     </div>
 
+    <!-- Capturar a tecla F9 para gerar a senha -->
+    <script>
+        // Função para gerar uma nova senha
+        function gerarSenha() {
+            // Aqui você adiciona a lógica para gerar a senha
+            document.getElementById('message').innerHTML = "Gerando nova senha...";
+        }
+
+        // Evento para capturar a tecla F9
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'F9') {
+                event.preventDefault();  // Evita a ação padrão da tecla F9 no navegador
+                gerarSenha();  // Chama a função de gerar a senha
+            }
+        });
+    </script>
+
     <script src="javascript/gerar_senha.js"></script>
 </body>
 </html>

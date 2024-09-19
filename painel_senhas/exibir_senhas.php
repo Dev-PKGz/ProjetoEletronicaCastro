@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<link rel="icon" href="../img/favicon.ico" type="image/x-icon">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css">

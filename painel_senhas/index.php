@@ -29,29 +29,45 @@ check_page_access(['Ven', 'Dev', 'ecom']);
         <ul>
         <?php
             include('../connections/menu.php');
-            ?>
-                        <!-- Item Logout -->
-                        <li class="item-menu">
-                <a href="../connections/logout.php">
-                    <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
-                    <span class="txt-link">Logout</span>
-                </a>
-            </li>
-
+        ?>
+        <!-- Item Logout -->
+        <li class="item-menu">
+            <a href="../connections/logout.php">
+                <span class="icon"><i class="bi bi-box-arrow-right"></i></span>
+                <span class="txt-link">Logout</span>
+            </a>
+        </li>
         </ul>
-    </nav><!--menu-lateral-->
+</nav><!--menu-lateral-->
 
-    <script src="../home/javascript/menu.js"></script>
+<script src="../home/javascript/menu.js"></script>
 
-    <div class="container">
-        <h1>Sistema de Senha e Fila</h1>
-        <button onclick="chamarProximaSenha()" class="button">Chamar Próxima Senha</button>
-        <div id="message" class="message"></div>
-        <br><br>
-        <a href="exibir_senhas.php" target="_blank" class="button">Abrir Exibir Senhas</a>
-    </div>
+<div class="container">
+    <h1>Sistema de Senha e Fila</h1>
+    <button onclick="chamarProximaSenha()" class="button">Chamar Próxima Senha</button>
+    <div id="message" class="message"></div>
+    <br><br>
+    <a href="exibir_senhas.php" target="_blank" class="button">Abrir Exibir Senhas</a>
+</div>
 
-    <script src="javascript/gerar_senha.js"></script>
-    <script src="javascript/chamar_proxima_senha.js"></script>
+<!-- Adicionar o evento para capturar a tecla F9 -->
+<script>
+    // Função para chamar a próxima senha
+    function chamarProximaSenha() {
+        // Aqui você coloca o código para chamar a próxima senha
+        document.getElementById('message').innerHTML = "Chamando próxima senha...";
+    }
+
+    // Evento para capturar a tecla F9
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'F9') {
+            event.preventDefault();  // Evita a ação padrão da tecla F9 no navegador
+            chamarProximaSenha();  // Chama a função
+        }
+    });
+</script>
+
+<script src="javascript/gerar_senha.js"></script>
+<script src="javascript/chamar_proxima_senha.js"></script>
 </body>
 </html>

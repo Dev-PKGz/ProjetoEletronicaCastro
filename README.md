@@ -18,6 +18,14 @@ Juntamente com a Senha aonde mostra a senha e a proxima senha a ser chamada. Com
 * ##### Gerenciamento De Usuarios Que Chamou a Senha:
 Com esse sistema é possivel, vincular a senha chamada com o atendente que chamou ela, assim sendo possivel criar dashboard, tanto no PowerBI quanto em algum sistema de manipulação de Dados. Assim Conseguindo criar metas e Verificar o desempenho de cada Funcionario.
 
+* ##### Impressão em Segundo Plano:
+Impressão das senhas agora são feitas em segundo plano, e não tem a necessidade de selecionar qual impressão basta deixar a impressora de preferencia como Padrão do sistema.
+Obs: Precisa Fazer a seguinte alteração no Navegador
+* Crie um atalho do Google Chrome com o parâmetro --kiosk-printing:
+* Clique com o botão direito no ícone do Chrome e selecione Propriedades.
+* No campo Destino, adicione --kiosk-printing:
+* "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --kiosk-printing
+
 * ##### Em Breve Mais Funcionalidades
 
 #### Construído com
