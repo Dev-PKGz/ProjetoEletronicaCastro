@@ -26,6 +26,11 @@ Obs: Precisa Fazer a seguinte alteração no Navegador
 * No campo Destino, adicione --kiosk-printing:
 * "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --kiosk-printing
 
+* ##### Impressão Com Designer Exclusivo:
+Agora é possivel modificar algumas informações da Impressão, Como Logo e QRCODE Que foi Adicionado.
+* Para Alterar A Logo Precisa Ir dentro do Codigo Gerar Senha.
+* Dentro da pasta dos Arquivos do JavaScript e Alterar o Link da Logo e Do QRCODE.
+
 * ##### Em Breve Mais Funcionalidades
 
 #### Construído com
