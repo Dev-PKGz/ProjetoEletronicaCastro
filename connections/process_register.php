@@ -8,9 +8,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pass = $_POST['password'];
     $sector = $_POST['sector'];
 
-    // Verifica se o nome de usuário contém apenas letras
-    if (!preg_match('/^[a-zA-Z]+$/', $user)) {
-        header("Location: ../register?error=O nome de usuário deve conter apenas letras.");
+    // Verifica se o nome de usuário contém apenas letras e espaços
+    if (!preg_match('/^[a-zA-Z ]+$/', $user)) {
+        header("Location: ../register?error=O nome de usuário deve conter apenas letras e espaços.");
         exit();
     }
 
