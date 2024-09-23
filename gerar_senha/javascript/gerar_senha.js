@@ -28,7 +28,9 @@ function imprimirSenha(senha) {
     janelaImpressao.document.write('</style>');
     janelaImpressao.document.write('</head><body>');
     janelaImpressao.document.write('<div class="ticket">');
-    janelaImpressao.document.write('<img src="https://i.ibb.co/gzYdQn3/preto-e-branco.png">');
+    
+    // Imagem principal
+    janelaImpressao.document.write('<img id="logo" src="https://i.ibb.co/gzYdQn3/preto-e-branco.png">');
     janelaImpressao.document.write('<p>------------------</p>');
     janelaImpressao.document.write('<p>Senha</p>');
     janelaImpressao.document.write('<br>');
@@ -36,18 +38,37 @@ function imprimirSenha(senha) {
     janelaImpressao.document.write('<br>');
     janelaImpressao.document.write('<p>------------------</p>');
     janelaImpressao.document.write('<p>Não Perca Nossas Novidades:</p>');
-    // Insira a imagem do QR Code
-    janelaImpressao.document.write('<img src="https://qr.io/qr-svg/shXpwv.svg?1726841050633" alt="QR Code">');
     
+    // QR Code
+    janelaImpressao.document.write('<img id="qrcode" src="https://qr-codes-svg.s3.amazonaws.com/shXpwv.svg?1726930290996" alt="QR Code">');
     janelaImpressao.document.write('<p>' + new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString() + '</p>');
     janelaImpressao.document.write('<br>');
     janelaImpressao.document.write('<p>------------------</p>');
     janelaImpressao.document.write('</div>');
     janelaImpressao.document.write('</body></html>');
     janelaImpressao.document.close();
-    janelaImpressao.print();
-}
+    
+    // Função para aguardar o carregamento das imagens antes de imprimir
+    function carregarEImprimir() {
+        var logo = janelaImpressao.document.getElementById('logo');
+        var qrcode = janelaImpressao.document.getElementById('qrcode');
 
+        // Verificar se ambas as imagens estão carregadas
+        if (logo.complete && qrcode.complete) {
+            janelaImpressao.focus();
+            janelaImpressao.print();  // Realiza a impressão
+            setTimeout(function() {
+                janelaImpressao.close();  // Fecha a janela após a impressão
+            }, 1000);  // Ajuste o tempo se necessário
+        } else {
+            // Repetir a verificação após um pequeno intervalo
+            setTimeout(carregarEImprimir, 100);
+        }
+    }
+
+    // Iniciar o processo de impressão após o carregamento das imagens
+    carregarEImprimir();
+}
 
 
 // Exemplo com o SDK da Epson
