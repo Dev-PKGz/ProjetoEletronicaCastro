@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #e0e0e0;
+    background-color: #f0f0f0;
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,88 +11,130 @@ body {
 
 .container {
     background-color: white;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     width: 100%;
-    max-width: 1600px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 1400px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .anuncios {
-    background-color: #1e3e75; /* Azul escuro */
+    background-color: #1e3e75;
     display: flex;
-    flex-direction: column; /* Ajusta para empilhar elementos verticalmente */
+    flex-direction: column;
     color: white;
-    width: 70%; /* Ajusta a largura conforme necessário */
-    padding: 20px; /* Adiciona padding para o conteúdo */
-    box-sizing: border-box; /* Inclui padding e borda na largura total */
-    overflow: hidden; /* Garante que o conteúdo não ultrapasse o contêiner */
+    width: 65%;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    transition: background-color 0.3s;
 }
 
-/* Estilo para imagens e vídeos dentro de .anuncios */
+.anuncios:hover {
+    background-color: #284e8f; /* Efeito de hover para o painel de anúncios */
+}
+
+/* Estilo para imagens e vídeos */
 .anuncios img, .anuncios video {
-    width: 100%; /* Faz com que o mídia ocupe 100% da largura disponível */
-    height: auto; /* Mantém a proporção original */
-    max-height: 80vh; /* Limita a altura máxima para evitar que o conteúdo ultrapasse a tela */
+    width: 100%;
+    height: auto;
+    max-height: 75vh;
     display: block;
-    margin: 0 auto; /* Centraliza horizontalmente */
+    margin: 0 auto;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease;
+}
+
+.anuncios img:hover, .anuncios video:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Efeito de sombra ao passar o mouse */
 }
 
 .anuncios h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #ffeb3b; /* Amarelo vibrante */
 }
 
 .anuncios p {
     font-size: 18px;
+    margin-bottom: 10px;
 }
 
 .senha-container {
     background-color: #f5f5f5;
-    width: 30%; /* Ajusta a largura para a área de senhas */
-    padding: 20px;
+    width: 35%;
+    padding: 30px;
     text-align: center;
-    box-sizing: border-box; /* Inclui padding e borda na largura total */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.senha-container:hover {
+    background-color: #ebebeb; /* Efeito de hover no painel de senhas */
 }
 
 .hora-atual {
-    font-size: 36px; /* Aumenta o tamanho da fonte */
-    color: #1e3e75; /* Azul escuro */
+    font-size: 40px;
+    color: #1e3e75;
     margin-bottom: 20px;
     font-weight: bold;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #dcedc8; /* Verde claro */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #c8e6c9; /* Verde claro */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
 }
 
 .senha-container h1 {
-    font-size: 32px;
+    font-size: 34px;
     margin-bottom: 20px;
-    color: #1e3e75; /* Azul escuro */
+    color: #1e3e75;
 }
 
 .senha {
-    background-color: #fdd835; /* Amarelo */
-    padding: 10px;
-    border-radius: 8px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    padding: 90px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fdd835;
+    padding: 60px;
+    border-radius: 12px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.senha:hover {
+    background-color: #ffeb3b;
+    transform: translateY(-5px); /* Elevação leve ao passar o mouse */
 }
 
 .senha h2 {
-    font-size: 24px;
-    color: #1e3e75; /* Azul escuro */
-    margin: 0;
+    font-size: 26px;
+    color: #1e3e75;
 }
 
 #senhaAtual, #proximaSenha {
-    color: #d32f2f; /* Vermelho */
+    color: #d32f2f;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 30px;
 }
 
 @media (max-width: 768px) {
@@ -106,6 +148,14 @@ body {
     }
 
     .anuncios {
-        padding: 10px; /* Reduz o padding para telas menores */
+        padding: 15px;
+    }
+
+    .senha {
+        padding: 40px;
+    }
+
+    .hora-atual {
+        font-size: 30px;
     }
 }

@@ -9,6 +9,8 @@
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
     <title>Gerenciador de Fila com Senha</title>
 </head>
 <body>
