@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<link rel="icon" href="../img/favicon.ico" type="image/x-icon">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css">
@@ -41,18 +40,21 @@
                 <h2>Próxima Senha: <span id="proximaSenha"></span></h2>
             </div>
 
-            <!-- Adicionando o relógio abaixo das senhas -->
+            <!-- Adicionando o relógio -->
             <div id="relogio" class="hora-atual"></div>
         </div>
     </div>
 
-    <!-- Adicionando o elemento de áudio -->
+    <!-- Adicionando o som de alerta escolhido -->
     <audio id="alertSound">
-        <source src="sound/alert.mp3" type="audio/mpeg">
+        <?php
+        $selectedSoundFile = 'sound/selected_alert.txt';
+        $alertSound = file_exists($selectedSoundFile) ? file_get_contents($selectedSoundFile) : 'alert2.mp3';
+        echo "<source src='sound/$alertSound' type='audio/mpeg'>";
+        ?>
         Seu navegador não suporta áudio HTML5.
     </audio>
 
-    <!-- Script para exibir o relógio em tempo real -->
     <script>
         function atualizarRelogio() {
             const agora = new Date();
@@ -64,7 +66,13 @@
         }
         
         setInterval(atualizarRelogio, 1000);
-        atualizarRelogio(); // Chama a função imediatamente para mostrar o horário ao carregar a página
+        atualizarRelogio();
+
+        // Função para tocar o som de alerta
+        function tocarAlerta() {
+            const alertSound = document.getElementById('alertSound');
+            alertSound.play();
+        }
     </script>
 
     <script src="javascript/exibir_senhas.js"></script>

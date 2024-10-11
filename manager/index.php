@@ -13,7 +13,7 @@ check_page_access(['Dev', 'Adm']);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../home/css/style.css">
+    <link rel="stylesheet" href="../home/css/menu_style.css">
     <link rel="stylesheet" href="../painel_senhas//css/style_manager.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
@@ -43,9 +43,10 @@ check_page_access(['Dev', 'Adm']);
         </ul>
     </nav><!--menu-lateral-->
 
-    <!-- Adicionando o botão Configuração Anuncio no topo -->
+    <!-- Adicionando dois botões Configuração no topo -->
     <div class="config-anuncio-container">
         <a href="../painel_senhas/anuncio/" target="_blank" class="button2"><i class="bi bi-gear"></i> Configuração Anuncio</a>
+        <a href="../painel_senhas/audio_config.php" target="_blank" class="button2" style="margin-left: 10px;"><i class="bi bi-gear"></i> Configuração Alerta</a>
     </div>
 
     <div class="container">
