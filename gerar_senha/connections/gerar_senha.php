@@ -15,8 +15,20 @@ if ($conn->connect_error) {
     exit();
 }
 
-// Gerar nova senha
-$nova_senha = 'S' . str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT);
+// Obter a última senha
+$sql_last_senha = "SELECT senha FROM senhas ORDER BY id DESC LIMIT 1";
+$result_last_senha = $conn->query($sql_last_senha);
+
+if ($result_last_senha->num_rows > 0) {
+    $last_senha_row = $result_last_senha->fetch_assoc();
+    $last_senha = intval(substr($last_senha_row['senha'], 1)); // Remover o "S" e converter para inteiro
+} else {
+    $last_senha = 0; // Se não houver senhas no banco, começa com 0
+}
+
+// Gerar nova senha incremental
+$nova_senha = 'S' . str_pad($last_senha + 1, 4, '0', STR_PAD_LEFT);
+
 $sql = "INSERT INTO senhas (senha) VALUES ('$nova_senha')";
 
 if ($conn->query($sql) === TRUE) {
