@@ -61,7 +61,6 @@ check_page_access(['Ven', 'Dev', 'ecom']);
     });
 </script>
 
-<script src="javascript/gerar_senha.js"></script>
 <script src="javascript/chamar_proxima_senha.js"></script>
 </body>
 </html>

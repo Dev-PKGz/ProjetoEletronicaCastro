@@ -79,16 +79,16 @@ check_page_access(['Dev', 'Adm']);
                     
                     <h3>Atualizar Email</h3>
                     <label for="email">Email:</label>
-                    <input type="email" name="email"><br><br>
+                    <input type="email" id="email" name="email"><br><br>
                     <input type="submit" name="update_email" value="Atualizar Email"><br><br>
                     
                     <h3>Atualizar Senha</h3>
                     <label for="password">Senha:</label>
-                    <input type="password" name="password"><br><br>
+                    <input type="password" id="password" name="password"><br><br>
                     <input type="submit" name="update_password" value="Atualizar Senha"><br><br>
                     
                     <h3>Atualizar Setor</h3>
-                    <label for="sector">Setor:</label>
+                    <label for="sector" id="sector" name="sector">Setor:</label>
                     <select name="sector">
                         <option value="Dev">Desenvolvedor</option>
                         <option value="Adm">Administração</option>

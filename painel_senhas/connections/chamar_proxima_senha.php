@@ -3,7 +3,7 @@ session_start();
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $dbname = "fila_senha";
 
 // Criar conexão
